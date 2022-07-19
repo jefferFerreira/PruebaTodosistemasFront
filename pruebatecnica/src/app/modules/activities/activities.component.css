@@ -1,0 +1,6 @@
+.icons a {
+    padding: 3px;
+}
+.icons {
+    display: flex;
+}

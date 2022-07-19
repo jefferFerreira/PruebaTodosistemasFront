@@ -1,0 +1,92 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-tabs card-header-danger">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <h4 class="nav-tabs-title">Listado de actividades generales</h4>
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="nav-item">
+                                        <a mat-button class="nav-link active" routerLink="/activities/add">
+                                            <i class="material-icons">add</i> Crear actividad
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table" *ngIf="activities">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Código
+                                    </th>
+                                    <th>
+                                        Descripción
+                                    </th>
+                                    <th>
+                                        Estado
+                                    </th>
+                                    <th>
+                                        Fecha Creado
+                                    </th>
+                                    <th>
+                                        Fecha Estimada Ejecución
+                                    </th>
+                                    <th>
+                                        Nombre Empleado
+                                    </th>
+                                    <th>
+                                        Días de retraso
+                                    </th>
+                                    <th>
+                                        Acciones
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let activity of activities">
+                                        <td>
+                                            {{activity.codigo}}
+                                        </td>
+                                        <td class="text-primary">
+                                            {{activity.descripcion}}
+                                        </td>
+                                        <td>
+                                            {{activity.estado}}
+                                        </td>
+                                        <td>
+                                            {{activity.fecha_creado | date:'d/MM/yyyy'}}
+                                        </td>
+                                        <td>
+                                            {{activity.fecha_ejecucion | date:'d/MM/yyyy'}}
+                                        </td>
+                                        <td class="text-primary">
+                                            {{activity.empleado.nombres}} {{activity.empleado.apellidos}}
+                                        </td>
+                                        <td class="text-primary">
+                                            {{ getDaysLate(activity.fecha_ejecucion )}}
+                                        </td>
+                                        <td class="icons">
+                                            <a mat-button class="nav-link active">
+                                                <i class="material-icons">edit</i>
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                            <a mat-button class="nav-link active" (click)="deleteActivity(activity.codigo)">
+                                                <i class="material-icons">delete</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

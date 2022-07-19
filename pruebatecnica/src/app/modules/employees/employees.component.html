@@ -1,0 +1,66 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-tabs card-header-danger">
+            <h4 class="card-title"></h4>
+            <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+                <h4 class="nav-tabs-title">
+                  Listado de empleados de la compañía
+                </h4>
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                  <li class="nav-item">
+                    <a
+                      mat-button
+                      class="nav-link active"
+                      routerLink="/employees/add"
+                    >
+                      <i class="material-icons">add</i> Crear empleado
+                      <div class="ripple-container"></div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table" *ngIf="employees">
+                <thead class="text-primary">
+                  <th>Código</th>
+                  <th>Nombre</th>
+                  <th>Cédula</th>
+                  <th>Edad</th>
+                  <th>Teléfono</th>
+                  <th>Cargo</th>
+                  <th>Acciones</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let employee of employees">
+                    <td>{{employee.codigo}}</td>
+                    <td class="text-primary">{{employee.nombres}} {{employee.apellidos}}</td>
+                    <td>{{employee.cedula}}</td>
+                    <td>{{employee.edad}}</td>
+                    <td>{{employee.telefono}}</td>
+                    <td class="text-primary">{{employee.cargo}}</td>
+                    <td class="icons">
+                      <a mat-button class="nav-link active">
+                          <i class="material-icons">edit</i>
+                          <div class="ripple-container"></div>
+                      </a>
+                      <a mat-button class="nav-link active" (click)="deleteEmployee(employee.codigo)">
+                          <i class="material-icons">delete</i>
+                      </a>
+                  </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
